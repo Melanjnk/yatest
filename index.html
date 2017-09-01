@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/yaform.css">
+</head>
+<body>
+
+<form action="server/success.json" id="myForm" method="post">
+    <label>
+        ФИО
+        <input type="text" name="fio" value="Иванов Иван Иванович">
+    </label>
+    <label>
+        Email
+        <input type="text" name="email" class="" value="sdfdfs@ya.ru">
+    </label>
+    <label>
+        Phone
+        <input type="text" name="phone" value="+7(111)222-33-11">
+    </label>
+
+    <input type="submit" id="submitButton">
+</form>
+
+<div id="resultContainer">
+    <p></p>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="index.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const form = $('#myForm');
+
+        form.on('submit', function (e) {
+
+            e.preventDefault(false);
+
+            const fio = $(this).find("input[name='fio']");
+            const email = $(this).find("input[name='email']");
+            const phone = $(this).find("input[name='phone']");
+
+            let myForm = new MyForm(fio, email, phone);
+
+            myForm.submit();
+
+        });
+
+    });
+</script>
+</body>
+</html>
